@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $ideas = session()->get('ideas', []);
+    $ideas = DB:: table('ideas')->get();
 
     return view('ideas', [
         'ideas' => $ideas,
@@ -12,7 +12,8 @@ Route::get('/', function () {
 });
 
 Route::post('/ideas', function () {
-    $idea = request("idea");
+$idea = request("idea");
+
 
     session()->push('ideas', $idea);
 

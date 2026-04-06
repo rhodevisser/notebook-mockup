@@ -5,7 +5,11 @@ use App\Models\Idea;
 
 Route::get('/', function () {
 
-    $ideas = Idea::all();
+    $ideas = Idea::query()
+        ->when(request('state'), function ($query, $state) {
+            $query->where('state', $state);
+        })
+        ->get();
 
     return view('ideas', [
         'ideas' => $ideas,
@@ -15,7 +19,7 @@ Route::get('/', function () {
 Route::post('/ideas', function () {
    Idea::create([
         'description' => request('idea'),
-        'state' => 'pending...',
+        'state' => 'pending',
     ]);
 
     return redirect('/');

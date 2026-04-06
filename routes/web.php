@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Idea;
 
 Route::get('/', function () {
 
-    $ideas = DB:: table('ideas')->get();
+    $ideas = Idea::all();
 
     return view('ideas', [
         'ideas' => $ideas,
@@ -12,10 +13,10 @@ Route::get('/', function () {
 });
 
 Route::post('/ideas', function () {
-$idea = request("idea");
-
-
-    session()->push('ideas', $idea);
+   Idea::create([
+        'description' => request('idea'),
+        'state' => 'pending...',
+    ]);
 
     return redirect('/');
 });

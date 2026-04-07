@@ -3,16 +3,23 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Idea;
 
-Route::get('/', function () {
 
-    $ideas = Idea::query()
-        ->when(request('state'), function ($query, $state) {
-            $query->where('state', $state);
-        })
-        ->get();
+ // index
+Route::get('/ideas', function () {
+    $ideas = Idea::all();
 
-    return view('ideas', [
+    return view('ideas.index', [
         'ideas' => $ideas,
+    ]);
+});
+
+
+// show
+Route::get('/ideas/{id}', function ($id) {
+    $idea = Idea::find($id);
+
+    return view('ideas.show', [
+        'idea' => $idea,
     ]);
 });
 
@@ -27,8 +34,9 @@ Route::post('/ideas', function () {
 
 // Temporary until we talk about delete req
 Route::get('/delete-ideas', function () {
-    session()->forget('ideas');
-    return redirect('/');
+    Idea::truncat();
+
+    return redirect('/ideas');
 });
 
 

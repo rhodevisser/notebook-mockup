@@ -15,28 +15,40 @@ Route::get('/ideas', function () {
 
 
 // show
-Route::get('/ideas/{id}', function ($id) {
-    $idea = Idea::findOrFail($id);
+Route::get('/ideas/{idea}', function (Idea $idea) {
 
     return view('ideas.show', [
         'idea' => $idea,
     ]);
 });
 
-Route::post('/ideas', function () {
-   Idea::create([
-        'description' => request('idea'),
-        'state' => 'pending',
-    ]);
+//edit
+Route::get('/ideas/{idea}/edit', function (Idea $idea) {
 
-    return redirect('/');
+    return view('ideas.edit', [
+        'idea' => $idea,
+    ]);
 });
 
-// Temporary until we talk about delete req
-Route::get('/delete-ideas', function () {
-    Idea::truncat();
+//update
+Route::patch('/ideas/{idea}', function (Idea $idea) {
+   $idea->update([
+        'description' => request('description'),
+    ]);
+
+    return redirect("/ideas/{$idea->id}");
+});
+
+// store
+Route::post('/ideas', function () {
+    Idea::create([
+        'description' => request('description'),
+        'status' => 'pending',
+    ]);
 
     return redirect('/ideas');
 });
+
+
 
 

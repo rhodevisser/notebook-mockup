@@ -36,7 +36,7 @@ Route::patch('/ideas/{idea}', function (Idea $idea) {
         'description' => request('description'),
     ]);
 
-    return redirect("/ideas/{$idea->id}");
+    return redirect("/ideas/$idea->id");
 });
 
 // store
@@ -45,6 +45,13 @@ Route::post('/ideas', function () {
         'description' => request('description'),
         'status' => 'pending',
     ]);
+
+    return redirect('/ideas');
+});
+
+//destroy
+Route::delete('/ideas/{$idea}', function (Idea $idea) {
+    $idea->delete();
 
     return redirect('/ideas');
 });

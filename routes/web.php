@@ -43,14 +43,14 @@ Route::patch('/ideas/{idea}', function (Idea $idea) {
 Route::post('/ideas', function () {
     Idea::create([
         'description' => request('description'),
-        'status' => 'pending',
+        'state' => 'pending',
     ]);
 
     return redirect('/ideas');
 });
 
 //destroy
-Route::delete('/ideas/{$idea}', function (Idea $idea) {
+Route::delete('/ideas/{idea}', function (Idea $idea) {
     $idea->delete();
 
     return redirect('/ideas');

@@ -30,9 +30,16 @@
         @if($ideas->count())
             <div class="mt-6 text-white">
                 <h2 class="font-bold ">Your ideas: </h2>
+
                 <ul class="mt-5">
                     @foreach($ideas as $idea)
-                        <li class="text-sm"> {{ $idea->description }} </li>
+                        <li>
+                            <a
+                                href="/ideas/{{ $idea->id }}"
+                                class="text-sm">
+                                {{ $idea->description }}
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
             </div>

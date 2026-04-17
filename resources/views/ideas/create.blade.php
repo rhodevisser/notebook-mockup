@@ -16,6 +16,11 @@
                           rows="3"
                           class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"></textarea>
             </div>
+
+            @error('description')
+            <p class="text-red-500 text-xs mt-5"> {{$message}} </p>
+            @enderror
+
             <p class="mt-3 text-sm/6 text-gray-400">
                 Have an idea you want to save for later?
             </p>
@@ -28,6 +33,8 @@
                 Save
             </button>
         </div>
+
+
 
     </form>
 

@@ -1,5 +1,5 @@
 <nav>
-    <div class="navbar bg-base-100 shadow-sm">
+    <div class="navbar bg-base-100">
         <div class="navbar-start">
             <div class="dropdown">
                 <div tabindex="0"
@@ -48,7 +48,10 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="btn">Register</a>
+            <a href="/register"
+               class="btn btn-primary">
+                Register
+            </a>
         </div>
     </div>
 </nav>

@@ -16,5 +16,7 @@ Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy']);
 Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post( '/register', [RegisteredUserController::class, 'store']);
 
+Route::get('/login', [LogOutController::class, 'create']);
+Route::post('/login', [LogOutController::class, 'store']);
 Route::delete('/logout', [LogOutController::class, 'destroy']);
 

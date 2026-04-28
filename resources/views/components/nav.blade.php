@@ -47,13 +47,7 @@
                 </li>
             </ul>
         </div>
-        <div class="navbar-end">
-            @guest
-                <a href="/register"
-                   class="btn btn-primary">
-                    Register
-                </a>
-            @endguest
+        <div class="navbar-end space-x-2">
 
             @auth
                 <form method="POST"
@@ -64,6 +58,15 @@
                         Log Out
                     </button>
                 </form>
+            @else
+                <a href="/register"
+                   class="btn btn-primary">
+                    Register
+                </a>
+                <a href="/login"
+                   class="btn btn-secondary">
+                    Login
+                </a>
             @endauth
 
         </div>

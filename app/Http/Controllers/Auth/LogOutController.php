@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
 
 class LogOutController extends Controller
 {
@@ -14,7 +15,7 @@ class LogOutController extends Controller
      */
     public function create()
     {
-        //
+        return view('auth.login');
     }
 
     /**
@@ -22,7 +23,22 @@ class LogOutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate
+        $validated = $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', Password::default()],
+        ]);
+
+        // attempt to login
+        if (Auth::attempt($validated)) {
+            $request->session()->regenerate();
+
+            return redirect('/ideas');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
 

@@ -48,10 +48,24 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <a href="/register"
-               class="btn btn-primary">
-                Register
-            </a>
+            @guest
+                <a href="/register"
+                   class="btn btn-primary">
+                    Register
+                </a>
+            @endguest
+
+            @auth
+                <form method="POST"
+                      action="/logout">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-ghost">
+                        Log Out
+                    </button>
+                </form>
+            @endauth
+
         </div>
     </div>
 </nav>

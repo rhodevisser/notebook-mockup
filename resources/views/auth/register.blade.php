@@ -18,6 +18,7 @@
                    name="name"
                    required
             />
+            <x-forms.error name="name" />
 
             <label class="label"
                    for="email">
@@ -28,6 +29,7 @@
                    name="email"
                    required
             />
+            <x-forms.error name="email" />
 
             <label class="label">
                 Password
@@ -38,6 +40,7 @@
                    name="password"
                    required
             />
+            <x-forms.error name="password" />
 
             <button class="btn btn-neutral mt-4">
                 Register

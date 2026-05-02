@@ -14,7 +14,6 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        $ideas = Idea::all();
 
         return view('ideas.index', [
             'ideas' => Auth::user()->ideas,

@@ -16,11 +16,15 @@
             @else
             <p>
                 You have no ideas yet!
-                <a
-                    href="/ideas/create"
-                    class="text-blue-500 underline">
-                    Create your idea here...
-                </a>
             </p>
         @endif
+
+    <p class="mt-6">
+        <a
+            href="/ideas/create"
+            class="text-blue-500 underline">
+            Create your idea here...
+        </a>
+    </p>
+
 </x-layout>

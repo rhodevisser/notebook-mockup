@@ -27,11 +27,13 @@
                             New Idea
                         </a>
                     </li>
-                    <li>
-                        <a href="/admin">
-                            Admin
-                        </a>
-                    </li>
+                    @can('view-admin')
+                        <li>
+                            <a href="/admin">
+                                Admin
+                            </a>
+                        </li>
+                    @endcan
                 </ul>
             </div>
             <a class="btn btn-ghost text-xl">
@@ -50,11 +52,13 @@
                         New idea
                     </a>
                 </li>
-                <li>
-                    <a href="/admin">
-                        Admin
-                    </a>
-                </li>
+                @can('view-admin')
+                    <li>
+                        <a href="/admin">
+                            Admin
+                        </a>
+                    </li>
+                @endcan
             </ul>
         </div>
         <div class="navbar-end space-x-2">

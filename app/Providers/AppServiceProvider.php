@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         Gate::define('view-admin', function (User $user) {
-            return $user->id === 1;
+            return false;
         });
     }
 

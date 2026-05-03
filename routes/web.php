@@ -29,6 +29,12 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [LogOutController::class, 'store']);
 });
 
+Route::get('/admin', function () {
+    Gate::authorize('view-admin');
+
+    return 'Private only for admin area';
+});
+
 
 
 

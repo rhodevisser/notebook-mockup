@@ -42,7 +42,8 @@
             />
             <x-forms.error name="password" />
 
-            <button class="btn btn-neutral mt-4">
+            <button class="btn btn-neutral mt-4"
+                    data-test="register-button">
                 Register
             </button>
         </fieldset>
